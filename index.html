@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YumYard - Pan Asian Kitchen</title>
+    
+    <!-- 1. Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Load Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- 3. Load Icons (RemixIcon) -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- 4. Load PapaParse -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <!-- 5. Configure Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            yellow: '#FFC107', 
+                            yellowDark: '#e0a800',
+                            black: '#111111',
+                            white: '#FAFAFA',
+                            gray: '#1F1F1F',
+                            lightGray: '#F3F4F6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .pattern-bg {
+            background-color: #111111;
+            background-image: radial-gradient(#333 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+        .navbar {
+            transition: transform 0.3s ease-in-out, background-color 0.3s;
+        }
+        .navbar-hidden {
+            transform: translateY(-100%);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFC107;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-brand-lightGray text-brand-black font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-brand-black/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 group cursor-pointer">
+                <div class="bg-brand-yellow text-brand-black font-black text-xl px-3 py-1 rounded transform group-hover:-rotate-3 transition duration-300">
+                    YY
+                </div>
+                <span class="font-bold text-2xl text-white tracking-tight group-hover:text-brand-yellow transition">YumYard</span>
+            </div>
+            
+            <!-- Links -->
+            <div class="space-x-8 font-medium text-sm md:text-base text-gray-300">
+                <a href="#menu" class="hover:text-brand-yellow transition relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-yellow after:transition-all hover:after:w-full">Menu</a>
+                <a href="#contact" class="hover:text-brand-yellow transition relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-yellow after:transition-all hover:after:w-full">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="pattern-bg text-brand-white pt-32 pb-24 px-6 text-center relative overflow-hidden">
+        <!-- Gradient Overlay for better text contrast -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-black/80 pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10">
+            <span class="inline-block py-1 px-3 rounded-full bg-gray-800 text-brand-yellow text-xs font-bold tracking-wider mb-6 uppercase border border-gray-700">
+                Authentic Pan-Asian Kitchen
+            </span>
+            <h1 class="text-5xl md:text-7xl font-black mb-6 text-white leading-tight">
+                Wok Fired. <br>
+                <span class="text-brand-yellow">Fresh Served.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Experience the boldest flavors in town. From our signature crispy Orange Chicken to spicy Kung Pao, we bring the heat to your street.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#menu" class="bg-brand-yellow text-brand-black font-bold text-lg px-8 py-3 rounded-full hover:bg-brand-yellowDark transition transform hover:scale-105 shadow-lg shadow-yellow-500/20">
+                    View Menu
+                </a>
+                <a href="#contact" class="border border-gray-600 text-white font-semibold text-lg px-8 py-3 rounded-full hover:bg-gray-800 transition">
+                    Find Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MENU SECTION -->
+    <section id="menu" class="py-20 px-4 max-w-6xl mx-auto flex-grow">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black uppercase text-brand-black mb-3">Our Menu</h2>
+            <div class="h-1 w-20 bg-brand-yellow mx-auto rounded-full"></div>
+            <p class="text-gray-600 mt-4 max-w-lg mx-auto">Hand-picked ingredients, authentic spices, and recipes passed down through generations.</p>
+        </div>
+
+        <!-- Menu Container -->
+        <div id="menu-container" class="min-h-[300px]">
+            <!-- Loading State -->
+            <div class="flex flex-col items-center justify-center space-y-4 text-gray-400 py-12">
+                <i class="ri-loader-4-line text-4xl animate-spin text-brand-yellow"></i>
+                <p>Loading delicious items...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTACT -->
+    <footer id="contact" class="bg-brand-black text-brand-white py-16 border-t border-gray-800 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-white">Visit Us</h3>
+                <p class="text-gray-500 mt-2">Dine-in & Takeaway</p>
+            </div>
+
+            <!-- GRID LAYOUT FIX -->
+            <div class="grid md:grid-cols-2 gap-6 lg:gap-10">
+                
+                <!-- 1. Map Column -->
+                <!-- Added h-80 for mobile, h-auto for desktop to fill height -->
+                <div class="w-full h-80 md:h-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative group">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.539631141235!2d85.31649107462633!3d27.66971172715191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190016921967%3A0xcd8aea1688e9f1d2!2sYum%20Yard!5e0!3m2!1sen!2snp!4v1765890894815!5m2!1sen!2snp" 
+                        class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition duration-500" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <!-- Map Overlay Label -->
+                    <div class="absolute bottom-4 left-4 bg-brand-yellow text-brand-black px-3 py-1 text-xs font-bold rounded shadow-lg pointer-events-none">
+                        <i class="ri-map-pin-fill mr-1"></i> Lalitpur
+                    </div>
+                </div>
+
+                <!-- 2. Contact Info Column -->
+                <!-- Added 'flex flex-col justify-center' to vertically center content if map is taller -->
+                <div class="bg-brand-gray p-8 md:p-12 rounded-2xl border border-gray-800 flex flex-col justify-center h-full shadow-xl">
+                    
+                    <div class="space-y-8">
+                        <!-- Address -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gray-800 p-3 rounded-lg text-brand-yellow shrink-0">
+                                <i class="ri-map-pin-2-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Location</h4>
+                                <p class="text-gray-400 leading-relaxed">Kumaripati, Lalitpur</p>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gray-800 p-3 rounded-lg text-brand-yellow shrink-0">
+                                <i class="ri-phone-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Call Us</h4>
+                                <p class="text-gray-400">+977 980-000-0000</p>
+                                <!-- <p class="text-gray-500 text-sm mt-1">Available for delivery</p> -->
+                            </div>
+                        </div>
+
+                        <!-- Hours -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gray-800 p-3 rounded-lg text-brand-yellow shrink-0">
+                                <i class="ri-time-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Opening Hours</h4>
+                                <p class="text-gray-400">Daily: 10:00 AM - 9:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Socials -->
+                    <div class="mt-10 pt-8 border-t border-gray-700 flex gap-4">
+                        <a href="#" class="bg-gray-800 hover:bg-brand-yellow hover:text-brand-black text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-brand-yellow hover:text-brand-black text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-brand-yellow hover:text-brand-black text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="ri-whatsapp-line"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center text-gray-600 text-sm">
+                <p>&copy; 2024 YumYard. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script src="menu.js"></script>
+    <script src="script.js"></script>
+    
+    <!-- Navbar Scroll Logic (Inline for immediate effect) -->
+    <script>
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                navbar.classList.remove('navbar-hidden');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // Scroll Down
+                navbar.classList.add('navbar-hidden');
+            } else {
+                // Scroll Up
+                navbar.classList.remove('navbar-hidden');
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
