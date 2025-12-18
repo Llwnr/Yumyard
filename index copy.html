@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>YumYard - Pan Asian Kitchen</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- PapaParse -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <!-- Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            yellow: '#ebb311', 
+                            yellowDark: '#d4a00f', // Added for hover states
+                            yellowLight: '#FFFBEB',
+                            black: '#1F2937',
+                            white: '#FFFFFF',
+                            gray: '#F9FAFB',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* New Active State: Yellow Background, Black Text */
+        .active-category {
+            background-color: #ebb311 !important;
+            color: #1F2937 !important;
+            box-shadow: 0 4px 6px -1px rgba(235, 179, 17, 0.3);
+            transform: scale(1.05);
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body class="bg-brand-gray text-brand-black font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
+
+    <!-- HEADER / NAVBAR -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-transform duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo Section -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="group block">
+                        <div class="transition duration-300 transform group-hover:scale-105">
+                            <img src="./images/YumyardLogo.png" 
+                                 alt="YumYard Logo" 
+                                 class="w-auto object-contain">
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#hero" class="text-gray-600 hover:text-brand-yellow font-bold transition">Home</a>
+                    <a href="#menu-section" class="text-gray-600 hover:text-brand-yellow font-bold transition">Menu</a>
+                    <!-- Changed hover from Black to Dark Yellow -->
+                    <a href="#contact" class="px-6 py-2 bg-brand-yellow text-brand-black rounded-full font-bold hover:bg-brand-yellowDark hover:shadow-lg transition transform hover:-translate-y-0.5">
+                        Find Us
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-black hover:text-brand-yellow focus:outline-none p-2">
+                        <i class="ri-menu-4-line text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="hero" class="pt-32 pb-12 md:pb-24 bg-brand-yellow relative overflow-hidden">
+        <!-- Textured Pattern -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#000 2px, transparent 2px); background-size: 30px 30px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12">
+            
+            <!-- Text Content -->
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <span class="inline-block py-1 px-3 rounded-full bg-white/90 text-brand-black text-xs font-black tracking-widest mb-4 uppercase shadow-sm">
+                    Asian Fusion Kitchen
+                </span>
+                <h1 class="text-5xl md:text-7xl font-black text-white leading-[0.95] mb-6 drop-shadow-sm tracking-tight">
+                    SPICE. <br>
+                    <span class="text-brand-black">HAPPENED.</span>
+                </h1>
+                <p class="text-lg text-brand-black/80 font-medium mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                    Bold flavors, fresh ingredients, and the authentic wok-fired taste you crave. 
+                </p>
+                <div class="flex gap-4 justify-center md:justify-start">
+                    <!-- Updated Button Styles -->
+                    <a href="#menu-section" class="bg-brand-black text-white font-extrabold text-lg px-8 py-4 rounded-2xl hover:bg-gray-800 transition shadow-xl transform hover:-translate-y-1">
+                        Order Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero Image -->
+            <div class="w-full md:w-1/2 flex justify-center relative">
+                <div class="w-72 h-72 md:w-96 md:h-96 bg-brand-yellow flex items-center justify-center shadow-2xl border-[6px] border-white/40 relative rounded-3xl rotate-3 hover:rotate-0 transition duration-500">
+                    <img src="./images/YumyardLogo.png" alt="YumYard Big Logo" class="w-48 md:w-64 object-contain drop-shadow-md">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-4 bg-white text-brand-black p-3 rounded-xl font-bold shadow-lg -rotate-6 border-2 border-brand-black/5 z-20">
+                        <div class="flex items-center gap-2">
+                            <i class="ri-fire-fill text-orange-500 text-xl"></i>
+                            <div class="leading-none text-left">
+                                <span class="block text-xs text-gray-400 font-normal uppercase">Served</span>
+                                <span class="text-sm">Hot & Fresh</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT LAYOUT -->
+    <div id="menu-section" class="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-16">
+        
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- SIDEBAR NAVIGATION (Sticky) -->
+            <aside class="lg:w-64 flex-shrink-0">
+                <div class="sticky top-20 z-30 bg-brand-gray/95 backdrop-blur-sm lg:bg-transparent py-3 lg:py-0 -mx-4 px-4 lg:mx-0 lg:px-0">
+                    <div class="flex justify-between items-baseline mb-2 lg:mb-4">
+                        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider">Categories</h3>
+                        <span class="text-xs text-gray-400 lg:hidden">Scroll &rarr;</span>
+                    </div>
+                    
+                    <!-- Category List -->
+                    <ul id="category-nav" class="flex lg:flex-col overflow-x-auto lg:overflow-visible gap-2 no-scrollbar pb-1">
+                        <!-- JS Injected -->
+                        <li class="animate-pulse bg-gray-200 h-10 w-24 rounded-lg flex-shrink-0"></li>
+                        <li class="animate-pulse bg-gray-200 h-10 w-24 rounded-lg flex-shrink-0"></li>
+                        <li class="animate-pulse bg-gray-200 h-10 w-24 rounded-lg flex-shrink-0"></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- MENU GRID AREA -->
+            <main class="flex-grow w-full min-w-0">
+                <div id="menu-container" class="space-y-12">
+                    <!-- Loading State -->
+                    <div class="flex flex-col items-center justify-center py-20 text-gray-400">
+                        <i class="ri-loader-4-line text-5xl animate-spin text-brand-yellow mb-4"></i>
+                        <p class="font-medium">Firing up the wok...</p>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-white border-t border-gray-200 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
+                <div>
+                    <h2 class="text-3xl font-black text-brand-black mb-6">Visit YumYard</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
+                                <i class="ri-map-pin-fill text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-black">Location</h4>
+                                <p class="text-gray-600">Kumaripati, Lalitpur</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
+                                <i class="ri-phone-fill text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-black">Call Us</h4>
+                                <p class="text-gray-600">+977 980-000-0000</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
+                                <i class="ri-time-fill text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-black">Opening Hours</h4>
+                                <p class="text-gray-600">10:00 AM - 9:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="h-64 md:h-80 bg-gray-100 rounded-3xl overflow-hidden shadow-lg border-4 border-white">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.539631141235!2d85.31649107462633!3d27.66971172715191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190016921967%3A0xcd8aea1688e9f1d2!2sYum%20Yard!5e0!3m2!1sen!2snp!4v1765890894815!5m2!1sen!2snp" 
+                        class="w-full h-full border-0" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+            <div class="text-center border-t border-gray-100 pt-8">
+                <p class="text-sm text-gray-400 font-medium">&copy; 2025 YumYard. Spice Happened.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="menu.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

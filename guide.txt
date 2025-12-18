@@ -1,0 +1,401 @@
+html:
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YumYard - Pan Asian Kitchen</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- PapaParse -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <!-- Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            yellow: '#ebb311', 
+                            yellowLight: '#FFFBEB',
+                            black: '#1F2937',
+                            white: '#FFFFFF',
+                            gray: '#F3F4F6',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .active-category {
+            background-color: #1F2937; /* Changed active state to Black for better contrast */
+            color: #F59E0B;
+            border-color: #1F2937;
+        }
+    </style>
+</head>
+<body class="bg-brand-gray text-brand-black font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- HEADER / NAVBAR -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm transition-transform duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo Section -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="group">
+                        <!-- FIX: Wrapped in Black Box for Visibility -->
+                        <div class="rounded-lg shadow-md hover:shadow-xl transition duration-300 transform group-hover:scale-105">
+                            <img src="./images/YumyardLogo.png" 
+                                 alt="YumYard Logo" 
+                                 class="object-contain" style="width: 10%;">
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#hero" class="text-gray-600 hover:text-brand-black font-bold transition">Home</a>
+                    <a href="#menu-section" class="text-gray-600 hover:text-brand-black font-bold transition">Menu</a>
+                    <a href="#contact" class="px-6 py-2 bg-brand-yellow text-brand-black rounded-full font-bold hover:bg-brand-black hover:text-brand-yellow transition shadow-lg">
+                        Find Us
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-black hover:text-brand-yellow focus:outline-none p-2">
+                        <i class="ri-menu-4-line text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="hero" class="pt-32 pb-16 bg-brand-yellow relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#000 2px, transparent 2px); background-size: 30px 30px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center md:text-left flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand-black text-brand-yellow text-xs font-black tracking-widest mb-4 uppercase shadow-sm">
+                    Asian Fusion
+                </span>
+                <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-6 drop-shadow-sm">
+                    SPICE <br>
+                    <span class="text-brand-black">HAPPENED.</span>
+                </h1>
+                <p class="text-lg text-brand-black/80 font-medium mb-8 max-w-lg leading-relaxed">
+                    Bold flavors, fresh ingredients, and the authentic wok-fired taste you crave. 
+                </p>
+                <div class="flex gap-4 justify-center md:justify-start">
+                    <a href="#menu-section" class="bg-white text-brand-black font-extrabold text-lg px-8 py-4 rounded-xl hover:bg-brand-black hover:text-brand-yellow transition shadow-xl transform hover:-translate-y-1">
+                        Order Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero Image / Logo Display -->
+            <div class="md:w-1/2 flex justify-center relative">
+                <!-- FIX: Replaced Fire Icon with Logo -->
+                <div class="w-80 h-80 md:w-96 md:h-96 bg-brand-yellow flex items-center justify-center shadow-2xl border-8 border-white/30 relative animate-fade-in-up">
+                    <img src="./images/YumyardLogo.png" alt="YumYard Big Logo" class="w-48 md:w-64 object-contain">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-4 -right-4 bg-brand-black text-brand-yellow p-4 rounded-full font-bold shadow-lg rotate-12 border-4 border-white">
+                        Fresh<br>Daily
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT LAYOUT -->
+    <div id="menu-section" class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- SIDEBAR NAVIGATION -->
+            <aside class="lg:w-64 flex-shrink-0">
+                <div class="sticky top-24 z-30 bg-brand-gray lg:bg-transparent pt-2 pb-2 lg:py-0">
+                    <h3 class="lg:hidden text-sm font-bold text-gray-400 uppercase tracking-wider mb-2 px-1">Categories</h3>
+                    <ul id="category-nav" class="flex lg:flex-col overflow-x-auto lg:overflow-visible gap-3 lg:gap-2 no-scrollbar pb-2 lg:pb-0">
+                        <!-- JS Injected -->
+                        <li class="animate-pulse bg-gray-200 h-10 w-24 rounded-lg"></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- MENU GRID AREA -->
+            <main class="flex-grow min-h-screen w-full">
+                <div id="menu-container" class="space-y-16">
+                    <!-- Loading -->
+                    <div class="flex flex-col items-center justify-center py-20 text-gray-400">
+                        <i class="ri-loader-2-line text-5xl animate-spin text-brand-yellow mb-4"></i>
+                        <p class="font-medium">Firing up the wok...</p>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-white border-t border-gray-200 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+                <div>
+                    <h2 class="text-3xl font-black text-brand-black mb-6">Visit YumYard</h2>
+                    <div class="space-y-4 text-gray-600">
+                        <p class="flex items-center gap-3">
+                            <i class="ri-map-pin-fill text-brand-yellow text-xl"></i>
+                            Kumaripati, Lalitpur
+                        </p>
+                        <p class="flex items-center gap-3">
+                            <i class="ri-phone-fill text-brand-yellow text-xl"></i>
+                            +977 980-000-0000
+                        </p>
+                        <p class="flex items-center gap-3">
+                            <i class="ri-time-fill text-brand-yellow text-xl"></i>
+                            10:00 AM - 9:00 PM
+                        </p>
+                    </div>
+                </div>
+                <div class="h-64 bg-gray-100 rounded-2xl overflow-hidden shadow-inner relative">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.539631141235!2d85.31649107462633!3d27.66971172715191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190016921967%3A0xcd8aea1688e9f1d2!2sYum%20Yard!5e0!3m2!1sen!2snp!4v1765890894815!5m2!1sen!2snp" 
+                        class="w-full h-full border-0" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+            <div class="text-center border-t border-gray-100 pt-8">
+                <p class="text-sm text-gray-400">&copy; 2025 YumYard. Spice Happened.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="menu.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+js:
+// ==========================================
+// LOGIC SECTION
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Load Menu Data
+    if(typeof menuData !== 'undefined'){
+        Papa.parse(menuData, {
+            header: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+                initApp(results.data);
+            },
+            error: function(err) {
+                console.error("Error parsing CSV:", err);
+                document.getElementById('menu-container').innerHTML = '<p class="text-center text-red-500">Failed to load menu.</p>';
+            }
+        });
+    }
+
+    // 2. Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    let lastScrollTop = 0;
+    
+    window.addEventListener('scroll', () => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if(scrollTop > 300) {
+            if (scrollTop > lastScrollTop) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+        } else {
+            navbar.style.transform = 'translateY(0)';
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+
+    // 3. Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    mobileBtn.addEventListener('click', () => {
+        document.getElementById('menu-section').scrollIntoView({behavior: 'smooth'});
+    });
+});
+
+function initApp(items) {
+    const grouped = items.reduce((acc, item) => {
+        const cat = item.Category ? item.Category.trim() : 'Others';
+        if (!acc[cat]) acc[cat] = [];
+        acc[cat].push(item);
+        return acc;
+    }, {});
+
+    renderSidebar(Object.keys(grouped));
+    renderMenuGrid(grouped);
+    initScrollSpy();
+}
+
+function renderSidebar(categories) {
+    const navContainer = document.getElementById('category-nav');
+    navContainer.innerHTML = '';
+
+    categories.forEach((cat) => {
+        const li = document.createElement('li');
+        li.className = "flex-shrink-0"; 
+        
+        const catId = cat.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+
+        const btn = document.createElement('button');
+        btn.className = `
+            w-full text-left px-4 py-3 rounded-xl font-bold text-sm transition-all duration-200
+            border border-transparent hover:bg-white hover:shadow-sm text-gray-500 hover:text-brand-black
+            whitespace-nowrap lg:whitespace-normal
+            category-link
+        `;
+        btn.dataset.target = catId;
+        btn.textContent = cat;
+
+        btn.addEventListener('click', () => {
+            const targetSection = document.getElementById(catId);
+            if(targetSection) {
+                const offset = 100; 
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = targetSection.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+
+        li.appendChild(btn);
+        navContainer.appendChild(li);
+    });
+}
+
+function renderMenuGrid(groupedItems) {
+    const container = document.getElementById('menu-container');
+    container.innerHTML = '';
+
+    for (const [category, items] of Object.entries(groupedItems)) {
+        const catId = category.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+
+        const section = document.createElement('section');
+        section.id = catId;
+        section.className = "scroll-mt-32 mb-12 category-section";
+
+        const header = document.createElement('div');
+        header.className = "flex items-center gap-4 mb-6";
+        header.innerHTML = `
+            <h2 class="text-3xl font-black text-brand-black uppercase tracking-tight">${category}</h2>
+            <div class="h-1 flex-grow bg-gray-200 rounded-full"></div>
+        `;
+
+        const grid = document.createElement('div');
+        grid.className = "grid grid-cols-1 md:grid-cols-2 gap-6";
+
+        items.forEach(item => {
+            const card = document.createElement('div');
+            // FIX: Added max-w-full to prevent overflow
+            card.className = "bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-yellow/50 transition duration-300 flex gap-4 group max-w-full";
+            
+            const imgSrc = item.Image && item.Image.trim() !== '' ? item.Image : null;
+
+            let imgHTML = '';
+            if(imgSrc) {
+                // Image stays fixed size
+                imgHTML = `
+                    <div class="w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100">
+                        <img src="${imgSrc}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="${item.Item}">
+                    </div>
+                `;
+            }
+
+            // FIX: Added min-w-0 to the text container
+            // This allows the flex child to shrink below its content size, enabling truncation
+            card.innerHTML = `
+                ${imgHTML}
+                <div class="flex flex-col flex-grow justify-between min-w-0">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h4 class="font-bold text-lg text-brand-black leading-tight truncate">${item.Item}</h4>
+                            <span class="font-black text-brand-yellow whitespace-nowrap">${item.Price}</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mt-1 line-clamp-2 break-words">${item.Description}</p>
+                    </div>
+                    <button class="mt-3 text-xs font-bold text-brand-black uppercase tracking-wide self-start border-b-2 border-brand-yellow hover:bg-brand-yellow hover:border-transparent hover:px-2 hover:rounded-sm transition-all">
+                        Add
+                    </button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        section.appendChild(header);
+        section.appendChild(grid);
+        container.appendChild(section);
+    }
+}
+
+function initScrollSpy() {
+    const sections = document.querySelectorAll('.category-section');
+    const navLinks = document.querySelectorAll('.category-link');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active-category', 'shadow-md');
+                    link.classList.add('text-gray-500');
+                });
+
+                const activeId = entry.target.id;
+                const activeLink = document.querySelector(`.category-link[data-target="${activeId}"]`);
+                
+                if (activeLink) {
+                    activeLink.classList.remove('text-gray-500', 'hover:bg-white');
+                    activeLink.classList.add('active-category', 'shadow-md');
+                    activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+}
