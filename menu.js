@@ -14,7 +14,7 @@ Noodles,Dan Dan Noodles (Soup/Dry),Sichuan noodles. Available in Buff/Chicken/To
 Bold Asian Salads,Sichuan Buff Salad,Spicy salad with Buff meat.,Rs. 290,Salad/Sichuan buff.jpg
 Bold Asian Salads,Tangy Chicken Salad,Fresh salad with tangy chicken dressing.,Rs. 280,Salad/Tangy Chicken.jpg
 Bold Asian Salads,Tangy Thai Tofu Salad,Thai style salad with Tofu.,Rs. 260,Salad/Thai Tofu Salad.jpg
-Dumplings & Wontons,Momo with Signature Sauce,Available in Buff or Chicken.,Rs.220,
+Dumplings & Wontons,Momo with Signature Sauce,Available in Buff or Chicken.,Rs.220,Dumplings/Momo.webp
 Dumplings & Wontons,Wonton with Signature Sauce,Available in Buff or Chicken.,Rs. 240,Dumplings/Wonton.jpg
 Dumplings & Wontons,Fried Wonton,Crispy fried wontons. Available in Buff or Chicken.,Rs. 200,Dumplings/Fried Wonton.webp
 Hot Bites,Sichuan Fried Chicken,Spicy fried chicken bites.,Rs. 380,Hot Bites/Sichuan Fried Chicken.jpg
@@ -25,8 +25,8 @@ Hot Bites,Chicken / Buff Chilli,Spicy chilli chicken or buff.,Rs. 360,Hot Bites/
 Crispy Sides,Spring Roll (Veg/Chicken),Crispy rolls filled with vegetables or chicken.,Rs. 320,Crispy Sides/Spring Roll.jpg
 Crispy Sides,French Fries,Classic salted fries.,Rs. 220,Crispy Sides/French Fries.jpg
 Crispy Sides,Fish Nuggets,Breaded and fried fish bites.,Rs. 380,Crispy Sides/Fish Nuggets.jpg
-Crispy Sides,Sausage and Fries,,Rs. 320,
-Crispy Sides,Mustang Aloo,,Rs. 260,
-Crispy Sides,Nachos with Salsa,,Rs. 280,
-Crispy Sides,Loaded Nachos(Buff/Chi),,Rs. 420,
+Crispy Sides,Sausage and Fries,,Rs. 320,Crispy Sides/Sausage and fries.jpg
+Crispy Sides,Mustang Aloo,,Rs. 260,Crispy Sides/Mustang aloo.jpg
+Crispy Sides,Nachos with Salsa,,Rs. 280,Crispy Sides/Nachos with salsa.jpg
+Crispy Sides,Loaded Nachos(Buff/Chi),,Rs. 420,Crispy Sides/Loaded Nachos.jpg
 `; 
