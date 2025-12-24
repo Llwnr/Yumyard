@@ -73,8 +73,8 @@ section.innerHTML = `
                     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col w-full group overflow-hidden">
                         <!-- Image Container: Set to full width and fixed height -->
                         ${item.Image ? `
-                            <div class="w-full h-48 sm:h-56 flex-shrink-0 overflow-hidden bg-gray-50">
-                                <img src="${item.Image}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="w-full h-48 sm:h-60 flex-shrink-0 overflow-hidden bg-gray-50">
+                                <img src="./images/${item.Image}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             </div>
                         ` : ''}
                         
