@@ -42,31 +42,34 @@
 <body class="bg-brand-gray text-brand-black font-sans antialiased">
 
     <!-- 1. MAIN NAVBAR -->
-    <nav id="navbar" class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 h-20 flex items-center">
+    <!-- <nav id="navbar" class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 h-20 flex items-center">
         <div class="max-w-7xl mx-auto px-4 w-full flex justify-between items-center">
             <img src="./images/YumyardIcon.png" alt="YumYard" class="h-16 md:h-20 w-auto">
-            <button id="mobile-menu-btn" class="p-2 text-brand-black">
-                <i class="ri-menu-4-line text-3xl"></i>
-            </button>
+            
         </div>
-    </nav>
+    </nav> -->
 
     <!-- 2. HERO -->
-    <header class="pt-32 pb-16 bg-brand-yellow relative">
+    <header class="pt-16 pb-16 bg-brand-yellow relative">
+        <div class="absolute inset-0 opacity-20 pointer-events-none" 
+            style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2240%22 viewBox=%220 0 80 40%22%3E%3Cpath d=%22M0 40c0-22.091 17.909-40 40-40s40 17.909 40 40h-2c0-20.987-17.013-38-38-38S2 19.013 2 40H0zm4 0c0-19.882 16.118-36 36-36s36 16.118 36 36h-2c0-18.778-15.222-34-34-34S6 21.222 6 40H4zm4 0c0-17.673 14.327-32 32-32s32 14.327 32 32h-2c0-16.569-13.431-30-30-30S10 23.431 10 40H8zm4 0c0-15.464 12.536-28 28-28s28 12.536 28 28h-2c0-14.359-11.641-26-26-26S14 25.641 14 40h-2zm4 0c0-13.255 10.745-24 24-24s24 10.745 24 24h-2c0-12.15-9.85-22-22-22S18 27.85 18 40h-2zm4 0c0-11.046 8.954-20 20-20s20 8.954 20 20h-2c0-9.941-8.059-18-18-18S22 30.059 22 40h-2zm4 0c0-8.837 7.163-16 16-16s16 7.163 16 16h-2c0-7.732-6.268-14-14-14S26 32.268 26 40h-2zm4 0c0-6.627 5.373-12 12-12s12 5.373 12 12h-2c0-5.523-4.477-10-10-10S30 34.477 30 40h-2zm4 0c0-4.418 3.582-8 8-8s8 3.582 8 8h-2c0-3.314-2.686-6-6-6s-6 2.686-6 6h-2zm4 0c0-2.209 1.791-4 4-4s4 1.791 4 4h-2c0-1.105-.895-2-2-2s-2 .895-2 2h-2z%22 fill=%22%23ffffff%22 fill-opacity=%221%22/%3E%3C/svg%3E'); background-size: 60px 30px; opacity: 0.1;">
+        </div>
         <div class="max-w-7xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row items-center justify-between">
             <div class="md:w-1/2">
                 <span class="bg-brand-black text-brand-yellow px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-4 inline-block">Asian Fusion</span>
-                <h1 class="text-5xl md:text-7xl font-black text-white leading-none mb-4">SPICE <br><span class="text-brand-black">HAPPENED.</span></h1>
+                <h1 class="text-5xl md:text-7xl font-black text-white leading-none mb-4">SPICE <br><span class="text-brand-black">HAPPENS.</span></h1>
                 <p class="text-brand-black/80 font-medium mb-8">Bold flavors and authentic wok-fired taste.</p>
             </div>
-            <div class="hidden md:block w-64 h-64 bg-white/20 rounded-3xl rotate-3 flex items-center justify-center p-8">
+            <div class="hidden -mt-10 md:block w-80 h-80 bg-white/20 rounded-3xl flex items-center justify-center">
                 <img src="./images/YumyardLogo.png" class="w-full opacity-90" alt="Logo">
             </div>
+            
         </div>
+        
     </header>
 
     <!-- 3. STICKY CATEGORY BAR (The Fix) -->
-    <div class="sticky top-20 z-40 bg-brand-gray/90 backdrop-blur-md border-b border-gray-200 py-4 shadow-sm">
+    <div class="sticky top-0 z-40 bg-brand-gray/90 backdrop-blur-md border-b border-gray-200 py-4 shadow-sm">
         <div class="max-w-7xl mx-auto px-4">
             <ul id="category-nav" class="flex overflow-x-auto gap-3 no-scrollbar items-center">
                 <!-- JS Populated -->
@@ -131,7 +134,7 @@
                 </div>
             </div>
             <div class="text-center border-t border-gray-100 pt-8">
-                <p class="text-sm text-gray-400 font-medium">&copy; 2025 YumYard. Spice Happened.</p>
+                <p class="text-sm text-gray-400 font-medium">&copy; 2025 YumYard. Spice Happens.</p>
             </div>
         </div>
     </footer>
