@@ -90,7 +90,7 @@ section.innerHTML = `
                             </p>
 
                             <div class="mt-auto">
-                                <button class="text-xs font-bold text-brand-black uppercase border-b-2 border-brand-yellow w-max hover:bg-brand-yellow hover:px-2 transition-all">
+                                <button onclick="redirectToFoodmandu()" class="text-xs font-bold text-brand-black uppercase border-b-2 border-brand-yellow w-max hover:bg-brand-yellow hover:px-2 transition-all">
                                     Add to Order
                                 </button>
                             </div>
@@ -129,4 +129,8 @@ function initScrollSpy() {
             }
         });
     });
+}
+
+function redirectToFoodmandu(){
+    window.location.href = "https://foodmandu.com/Restaurant/Details/2599";
 }
